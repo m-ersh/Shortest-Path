@@ -26,7 +26,6 @@ for (let i = 0; i < redCells; i++) {
     cells[index].style.backgroundColor = 'red';
 }
 
-
 function handleClick(index) {
     if (start === null) {
         start = index;
@@ -38,6 +37,14 @@ function handleClick(index) {
     }        
 }
 
+function indexToCoordinate(index) {
+    return [index % size, Math.floor(index / size)];
+}
+
+function coordToIndex(x, y) {
+    return y * size + x;
+}
+
 function showPath(startIndex, endIndex) {
     const path = [startIndex, endIndex];
     for (const i of path) {
@@ -46,3 +53,7 @@ function showPath(startIndex, endIndex) {
         }
     }
 } 
+
+
+// Add in Breadth-First Search functionality. 
+// Consider making the red cells into a set? or list.
