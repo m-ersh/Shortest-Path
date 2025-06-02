@@ -3,6 +3,10 @@ const cells = [];
 const size = 16;
 let start = null;
 let end = null;
+const min = 6; 
+const max = 200;
+const redCells = Math.floor(Math.random() * (max - min +1)) + min; 
+let pickedIndexes = [];
 
 for (let i=0; i < size * size; i++) {
     const cell = document.createElement("div");
@@ -12,6 +16,16 @@ for (let i=0; i < size * size; i++) {
     grid.appendChild(cell);
     cells.push(cell);
 }
+
+for (let i = 0; i < redCells; i++) {
+    let index;
+    do {
+        index = Math.floor(Math.random() * cells.length);
+    } while (pickedIndexes.includes(index));
+    pickedIndexes.push(index);
+    cells[index].style.backgroundColor = 'red';
+}
+
 
 function handleClick(index) {
     if (start === null) {
@@ -31,4 +45,4 @@ function showPath(startIndex, endIndex) {
             cells[i].style.backgroundColor = "green";
         }
     }
-}
+} 
