@@ -5,23 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shortest Path</title>
     <style>
-        #grid {
-            display: grid;
-            grid-template-columns: repeat(16, 30px);
-            grid-template-rows: repeat(16, 30px);
-            gap: 2px;
-        }
-        .cell {
-            width: 30px;
-            height: 30px;
-            background-color: grey;
-            border: 1px solid black;
-            box-sizing: border-box;
-        }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#grid {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  gap: 0; /* remove spacing between cells */
+}
+
+.cell {
+  background-color: lightgray;
+  box-sizing: border-box;
+  border: 0.5px solid #999; /* thin visible borders */
+}
+
+nav {
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
 
     </style>
 </head>
 <body>
+  <nav>
+    <button id="previous">Previous</button>
+    <button id="reset">Reset</button>
+  </nav>
     <div id="grid"></div>
     <script src="main.js"></script>
 </body>
