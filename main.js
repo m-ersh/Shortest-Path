@@ -6,7 +6,7 @@ let end = null;
 const min = 6; 
 const max = 180;
 const redCells = Math.floor(Math.random() * (max - min +1)) + min; 
-let pickedIndexes = [];
+let pickedIndexes;
 
 for (let i=0; i < size * size; i++) {
     const cell = document.createElement("div");
@@ -17,13 +17,21 @@ for (let i=0; i < size * size; i++) {
     cells.push(cell);
 }
 
-for (let i = 0; i < redCells; i++) {
-    let index;
-    do {
-        index = Math.floor(Math.random() * cells.length);
-    } while (pickedIndexes.includes(index));
-    pickedIndexes.push(index);
-    cells[index].style.backgroundColor = 'red';
+generateRedCells();
+
+function generateRedCells() {
+    const redCells = Math.floor(Math.random() * (max - min + 1)) + min; 
+    pickedIndexes = [];
+
+    for (let i = 0; i < redCells; i++) {
+        let index;
+        do {
+            index = Math.floor(Math.random() * cells.length);
+        } while (pickedIndexes.includes(index));
+        pickedIndexes.push(index);
+        cells[index].style.backgroundColor = 'red';
+    }
+    
 }
 
 function handleClick(index) {
@@ -99,7 +107,19 @@ function showPath(startIndex, endIndex) {
             cells[i].style.backgroundColor = "black";
         }
     }
-} 
+}
+
+function resetLayout() {
+    start = null;
+    end = null;
+
+    for (const cell of cells) {
+        cell.style.backgroundColor = "";
+    }
+    generateRedCells();
+}
+
+document.getElementById("reset").addEventListener('click', resetLayout);
 
 
 // Add in Breadth-First Search functionality. - Done
