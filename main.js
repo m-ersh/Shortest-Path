@@ -5,7 +5,6 @@ let start = null;
 let end = null;
 const min = 6; 
 const max = 180;
-const redCells = Math.floor(Math.random() * (max - min +1)) + min; 
 let pickedIndexes;
 
 for (let i=0; i < size * size; i++) {
@@ -100,13 +99,18 @@ function showPath(startIndex, endIndex) {
             return;
         }
     }
-    path.reverse;
+    path.reverse();
 
     for (const i of path) {
         if (i !== startIndex && i !== endIndex) {
             cells[i].style.backgroundColor = "black";
         }
     }
+
+    const pathLength = path.length + 1;
+    setTimeout(() => {
+        alert(`It took ${pathLength} cells to get there!`);
+    }, 50);
 }
 
 function resetLayout() {
@@ -122,8 +126,8 @@ function resetLayout() {
 document.getElementById("reset").addEventListener('click', resetLayout);
 
 
-// Add in Breadth-First Search functionality. - Done
+// Add in Breadth-First Search functionality. - Done!
 // Consider making the red cells into a set? or list.
-// Add a reset button.
-// Add a previous layout button.
-// Count how many cells the path is.
+// Add a reset button. - Done, but make a new one that isn't 'new.'
+// Add a previous layout button. - Done, but make it work.
+// Count how many cells the path is. - Done! 
